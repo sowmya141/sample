@@ -17,7 +17,10 @@ interface PasswordState {
 }
 
 interface PasswordProps {
+  navigation:any,
+  route:any
 }
+
 export default class Password extends React.Component<PasswordProps,PasswordState> {
   componentDidMount() {
     this.setState({email: this.props.route.params.email})
@@ -35,7 +38,7 @@ export default class Password extends React.Component<PasswordProps,PasswordStat
   render() {
     const {viewStyle} = styles
         return (
-          <NativeBaseProvider>
+         
           <KeyboardAvoidingView style={{flex:1, backgroundColor:AppColors.keyboardVoiding}} behavior={Platform.OS == 'ios' ? 'padding' : null}>
           <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <View style = {{ flex: 1,
@@ -53,7 +56,7 @@ export default class Password extends React.Component<PasswordProps,PasswordStat
               onSubmitEditing = {this.submitButtonPressed} 
               returnKeyType = 'done' style = {{borderWidth:2,borderColor:'black',alignItems:'center',marginLeft:25,marginRight:20,paddingLeft:10,borderLeftWidth:3,borderRadius:25}}
                placeholder = 'Enter your password'  secureTextEntry={true} 
-               onChangeText={(text) => this.setState({password: 'admin@123'})}
+               onChangeText={(text) => this.setState({password: text})}
               />
              {/* </Card> */}
              <View style = {{width: '100%',marginTop: 30,justifyContent: 'center',alignItems: 'center',paddingBottom:10}}>
@@ -82,7 +85,7 @@ export default class Password extends React.Component<PasswordProps,PasswordStat
           </View>
           </TouchableWithoutFeedback>
           </KeyboardAvoidingView>
-          </NativeBaseProvider>
+        
     );
   }
         async submitButtonPressed() {
@@ -106,7 +109,7 @@ export default class Password extends React.Component<PasswordProps,PasswordStat
               // if (response.data.user.designation == 'Other') {
               //   Constants.isManager = true
               // }
-              this.props.navigation.navigate('Home', {Password: this.state.password})
+              this.props.navigation.navigate('Home')
               return
            }
            //Alert.alert("Error", response.errorMessage);

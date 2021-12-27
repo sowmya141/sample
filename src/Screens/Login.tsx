@@ -13,6 +13,7 @@ interface LoginState {
 }
 
 interface LoginProps {
+  navigation:any
 }
 
 export default class Login extends React.Component<LoginProps,LoginState> {
@@ -30,7 +31,7 @@ export default class Login extends React.Component<LoginProps,LoginState> {
   render() {
     const {viewStyle} = styles
       return (
-      <NativeBaseProvider>
+      
         <KeyboardAvoidingView style={{flex:1, backgroundColor:AppColors.keyboardVoiding}} behavior={Platform.OS == 'ios' ? 'padding' : null}>
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <View style={{flex: 1,
@@ -64,7 +65,7 @@ export default class Login extends React.Component<LoginProps,LoginState> {
           </View>
           </TouchableWithoutFeedback>
           </KeyboardAvoidingView>
-          </NativeBaseProvider>
+        
     );
   }
         async submitButtonPressed() {

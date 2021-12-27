@@ -18,9 +18,12 @@ interface AppointmentState {
     showDoneButtonStatus: boolean,
     showReSchedualDialog: boolean
     currentDate:String,
-    time: String
+    time: String,
+    isloading:boolean
 }
-interface AppointmentProps {
+interface navPage {
+  navigation:any,
+  route:any
 }
 
 const args = {
@@ -28,13 +31,8 @@ const args = {
   prompt: false // Optional boolean property. Determines if the user should be prompt prior to the call 
 }
 
-export default class Appointment extends Component {
- async refreshScreeningData() {
-     this.setState({proceedStatus: true, screeningCompleted: true, confirmedScreening: false})
-  }
-
-
-    constructor(props: AppointmentProps) {
+export default class Appointment extends Component <AppointmentState,navPage>{
+    constructor(props:any) {
     super(props);
     this.state = {
       isLoading: true,
@@ -60,7 +58,12 @@ export default class Appointment extends Component {
      this.logoutButtonAction = this.logoutButtonAction.bind(this);
      this.callButtonAction = this.callButtonAction.bind(this);
   }
-
+  async refreshScreeningData() {
+    this.setState({
+      proceedStatus: true,
+      screeningCompleted: true, 
+      confirmedScreening: false})
+ }
   callButtonAction() {
     this.setState({ showReSchedualDialog: false})
         // call(args).catch(console.error)

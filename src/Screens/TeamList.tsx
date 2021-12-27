@@ -11,6 +11,7 @@ interface TeamListState {
 }
 
 interface TeamListProps {
+    navigation:any
 }
 
 export default class TeamList extends Component<TeamListProps, TeamListState>  {

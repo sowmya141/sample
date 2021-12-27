@@ -8,7 +8,8 @@ interface TaskSummaryState {
     data: Array<SummaryData>
 }
 interface TaskSummaryProps {
-
+    navigation:any;
+    route:any
 }
 export default class TaskSummary extends React.Component<TaskSummaryProps,TaskSummaryState> {
     constructor(props :TaskSummaryProps) {

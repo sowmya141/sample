@@ -3,18 +3,21 @@ import {View, Image, Text } from 'react-native';
 import { NativeBaseProvider,} from 'native-base';
 import {getDay, getDateSuffix, getTime} from '../Helpers/DateExtension';
 import AppColors from './AppColors';
-export default class CheckInConfirmation extends React.Component {
+
+interface navPage{
+  navigation:any;
+  route:any;
+}
+export default class CheckInConfirmation extends React.Component <navPage>{
   componentDidMount() {
     setTimeout(() => {
       this.navigateToDashboard();
-    }, 2000);
+    }, 200);
   }
 
   render() {
-    const {viewStyle} = styles;
     return (
-      <NativeBaseProvider>
-     
+       
         <View
           style={{
             flex: 1,
@@ -22,6 +25,7 @@ export default class CheckInConfirmation extends React.Component {
             justifyContent: 'flex-end',
            alignSelf:'stretch'
           }}>
+            <View>
           <Text
             style={{
               color: AppColors.whiteTitle,
@@ -131,9 +135,10 @@ export default class CheckInConfirmation extends React.Component {
               }}
             />
           </View>
+          </View>
         </View>
       
-      </NativeBaseProvider>
+     
     );
   }
 

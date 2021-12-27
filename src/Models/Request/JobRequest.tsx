@@ -1,4 +1,4 @@
-import { JobStatus } from "src/Enums/JobStatus";
+import { JobStatus } from "../../Enums/JobStatus";
 
 export interface JobRequest {
     projectId: string

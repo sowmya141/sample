@@ -1,14 +1,10 @@
 import React, { Component } from 'react';
-import { Container, List, Content, Header, Card, CardItem, Text, Body, View, Button, Title, Spinner } from 'native-base';
-import { ListView, Alert, TouchableOpacity, FlatList, Dimensions, Image } from 'react-native';
+import { Container,  Text,  View, Spinner } from 'native-base';
+import {  Alert, FlatList, Dimensions, Image } from 'react-native';
 import TaskService from '../APIManager/TaskService'
 import { GetTaskListRequest } from '../Models/Request';
 import TaskItem from './TaskItem';
-import { TimeSheet } from 'src/Models/Response/TimeSheet';
-import { formatDate, getDay, getMonth, getDateSuffix } from '../Helpers/DateExtension';
-import ProjectService from '../APIManager/ProjectService';
-import { ProjectResponse, SummaryData } from '../Models/Response'
-import { WeekType } from '../Enums/WeekType'
+import { TimeSheet } from '../../src/Models/Response/TimeSheet';
 import Constants from '../Helpers/Constants';
 import AppColors from './AppColors';
 
@@ -19,12 +15,13 @@ interface DemoTaskListState {
 }
 
 interface DemoTaskListProps {
+    navigation:any
 }
 var taskListArray: Array<TimeSheet>
 var dates = Array<string>()
 var selectedIndex = 0
 export default class DemoTaskList extends Component<DemoTaskListProps, DemoTaskListState>  {
-    constructor(props: Readonly<{}>) {
+    constructor(props: DemoTaskListProps) {
         super(props);
         this.state = {
             isLoading: false,
@@ -46,14 +43,15 @@ export default class DemoTaskList extends Component<DemoTaskListProps, DemoTaskL
             <Container>
                 {this.state.isLoading ?
                     <View style={{ height: Dimensions.get('window').height, width: '100%', justifyContent: 'center', alignItems: 'center' }}>
-                        <View style={{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0, alignItems: 'center', justifyContent: 'center' }}><Spinner size='large' color={AppColors.appThemeColor} animating={true} /></View>
+                        <View style={{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0, alignItems: 'center', justifyContent: 'center' }}><Spinner size='lg' color={AppColors.appThemeColor} animating={true} /></View>
                     </View> : null}
-                <Content padder style={{ marginTop: 14, shadowColor: AppColors.shadowColor, shadowOffset: { width: 0, height: 2, }, shadowOpacity: 0.25, shadowRadius: 3.84, elevation: 5 }}>
+                <View  style={{ marginTop: 14, shadowColor: AppColors.shadowColor, shadowOffset: { width: 0, height: 2, }, shadowOpacity: 0.25, shadowRadius: 3.84, elevation: 5 }}>
                     {this.state.data.length != 0 ? <View style={{ marginBottom: 300 }}>
                         <FlatList
                             data={this.state.data}
                             renderItem={({ item, index }) => {
-                                return <TaskItem navigation={this.props.navigation} data={item} />
+                                return <TaskItem navigation={this.props.navigation} 
+                                data={item} />
                             }
                             } />
                     </View> :
@@ -62,7 +60,7 @@ export default class DemoTaskList extends Component<DemoTaskListProps, DemoTaskL
                             <Text style={{ textAlign: 'center', color: AppColors.grayTitle, marginTop: 35, marginLeft: 25, marginRight: 25, fontSize: 16 }}> Add the Daily tasks and Record the nummber of hours spent on each Task </Text>
                         </View>
                     }
-                </Content>
+                </View>
             </Container >
         );
     }

@@ -3,7 +3,7 @@ import { Container,  Button, Card, NativeBaseProvider} from 'native-base';
 import { Dimensions, Alert, Image, AsyncStorage,  Text, View, } from 'react-native';
 import AppColors from './AppColors';
 interface UserProps {
-
+  navigation:any
 }
 
 interface UserState {
@@ -31,7 +31,7 @@ export default class Profile extends React.Component<UserProps, UserState> {
   render() {
     const {viewStyle} = styles
       return (
-        <NativeBaseProvider>
+      
           <View style = {{ flex: 1,
     backgroundColor: AppColors.background,
     flexDirection: 'column'}}>
@@ -71,7 +71,7 @@ export default class Profile extends React.Component<UserProps, UserState> {
                     </View>
               </View>
           </View>
-          </NativeBaseProvider>
+      
     );
   }
 

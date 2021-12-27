@@ -2,9 +2,9 @@ import React from 'react';
 import { View, Text, Dimensions, Image, Alert } from 'react-native';
 import AppColors from './AppColors';
 import { Job } from '../Models/Response';
-import { Button, NativeBaseProvider, Tabs,  } from 'native-base';
+import { Button  } from 'native-base';
 import { JobType } from '../Enums/JobType';
-import { ScrollView, FlatList } from 'react-native-gesture-handler';
+import { ScrollView} from 'react-native-gesture-handler';
 import { Card, Spinner } from 'native-base';
 import { Marker } from 'react-native-maps';
 import MapView from 'react-native-maps';
@@ -13,9 +13,7 @@ import { getDateSuffix } from '../Helpers/DateExtension';
 import JobServices from '../APIManager/JobServices'
 import { JobRequest } from '../../src/Models/Request/JobRequest';
 import { JobStatus } from '../Enums/JobStatus';
-import TaskList from './TaskList';
-import DemoTaskList from './DemoTaskList';
-import DemoActiveJobSummary from './DemoActiveJobSummary';
+
 import Constants from '../Helpers/Constants';
 
 interface JobDetailState {
@@ -64,7 +62,7 @@ export default class JobDetail extends React.Component<
 
     render() {
         return (
-            <NativeBaseProvider>
+        
             <View style={{ flex: 1, backgroundColor: '#F8F8F8' }}>
                 <Dialog visible={this.state.dialogVisible}>
                     <DialogContent>
@@ -361,7 +359,7 @@ export default class JobDetail extends React.Component<
               this.state.isLoading && <View  style={{position: 'absolute', left: 0, right: 0,top:0, bottom: 0, alignItems: 'center', justifyContent: 'center'}}><Spinner size = 'lg' color= {AppColors.appThemeColor} animating={true}/></View>
              }
             </View>
-            </NativeBaseProvider>
+           
         );
     }
 

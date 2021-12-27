@@ -5,7 +5,7 @@ import TaskService from '../APIManager/TaskService'
 import { GetTaskListRequest } from '../Models/Request';
 import TaskItem from './TaskItem';
 import { TimeSheet } from '../../src/Models/Response/TimeSheet';
-import { formatDate, getDay, getMonth, getDateSuffix } from '../Helpers/DateExtension';
+import { formatDate, getDay, getDateSuffix } from '../Helpers/DateExtension';
 import ProjectService from '../APIManager/ProjectService';
 import { ProjectResponse, SummaryData } from '../Models/Response'
 import { WeekType } from '../Enums/WeekType'
@@ -26,12 +26,14 @@ interface TaskListState {
 }
 
 interface TaskListProps {
+    navigation:any;
+    route:any;
 }
 var taskListArray: Array<TimeSheet>
 var dates = Array<string>()
 var selectedIndex = 0
 export default class TaskList extends Component<TaskListProps, TaskListState>  {
-    constructor(props: Readonly<{}>) {
+    constructor(props:TaskListProps) {
         super(props);
         this.state = {
             projectId: this.props.route.params.projectId,
@@ -145,7 +147,7 @@ export default class TaskList extends Component<TaskListProps, TaskListState>  {
                         <FlatList
                             data={this.state.data}
                             renderItem={({ item, index }) => {
-                                return <TaskItem navigation={this.props.navigation} data={item} />
+                                return <TaskItem  />
                             }
                             } />
                     </View> :

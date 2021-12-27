@@ -5,9 +5,10 @@ import ProjectService from '../APIManager/ProjectService';
 import ProjectItem from './ProjectItem';
 import Constants from '../Helpers/Constants';
 import AppColors from './AppColors';
+import {ProjectResponse} from '../Models/Response/ProjectResponse'
 interface ProjectListState {
     isLoading: boolean,
-    data: []
+    data: Array<ProjectResponse>
 }
 
 interface ProjectListProps {
@@ -46,7 +47,7 @@ export default class ProjectList extends Component<ProjectListProps, ProjectList
     numberOfÇolumn = width > 375 ? 4 : 3
     render() {
         return (
-            <NativeBaseProvider>
+           
             <Container>
                 {this.state.isLoading ?
                     <View style={{ height: Dimensions.get('window').height, width: '100%', justifyContent: 'center', alignItems: 'center' }}>
@@ -101,7 +102,7 @@ export default class ProjectList extends Component<ProjectListProps, ProjectList
                 
                 
             </Container>
-            </NativeBaseProvider>
+    
         );
     }
 }

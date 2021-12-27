@@ -48,7 +48,7 @@ export default class MyAttendance extends React.Component<
   render() {
     const {viewStyle} = styles;
     return (
-      <NativeBaseProvider>
+    
         <View
           style={{
             flex: 1,
@@ -225,7 +225,7 @@ export default class MyAttendance extends React.Component<
             </View>
           ) : null}
         </View>
-      </NativeBaseProvider>
+   
     );
   }
 

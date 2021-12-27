@@ -16,7 +16,7 @@ export default class EmployeeItem extends Component {
                 </Left>
                 <Body>
                     <Text>{this.data.firstName} </Text>
-                    <Text note numberOfLines={2}>{this.data.designation}</Text>
+                    <Text numberOfLines={2}>{this.data.designation}</Text>
                 </Body>
                 <Right>
                     <View style={{ alignItems: 'flex-end' }}>

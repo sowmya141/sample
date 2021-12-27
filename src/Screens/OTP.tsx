@@ -13,7 +13,10 @@ interface OTPState {
   isHidden: boolean
 }
 interface OTPProps {
+  navigation:any,
+  route:any
 }
+
 export default class OTP extends React.Component<OTPProps, OTPState> {
   componentDidMount() {
     this.setState({ requestId: this.props.route.params.requestId })

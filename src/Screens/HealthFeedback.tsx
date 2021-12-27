@@ -45,14 +45,16 @@ export default class HealthFeedback extends React.Component<HealthFeedbackProps,
     {
        
         return(
-          <NativeBaseProvider>
+        
                 <View style = {{flex: 1, backgroundColor: AppColors.background}}>
                     <Image source={require('../assets/health_bg.png')}style = {{resizeMode:'contain', height: '100%', width: '100%'}}/>
                     <Dialog visible={this.state.dialogVisible} dialogAnimation={new SlideAnimation({slideFrom:'bottom'})}>
                         <DialogContent>
                             <View style = {{width: Dimensions.get('window').width - 75, height: 275}}>
                             {              
-                                this.state.isLoading && <View style={{position: 'absolute', left: 0, right: 0,top:0, bottom: 0, alignItems: 'center', justifyContent: 'center'}}>
+                                this.state.isLoading && 
+                                <View style={{position: 'absolute', left: 0, right: 0,top:0, bottom: 0, alignItems: 'center', justifyContent: 'center'}}>
+                                   
                                </View>
                             }
                                 <View style = {{alignItems: 'flex-end'}}>
@@ -69,7 +71,7 @@ export default class HealthFeedback extends React.Component<HealthFeedbackProps,
                                                 <Text style = {{marginLeft: 10, fontSize: 15, fontWeight: '500'}}> {this.state.selectedIndex + 1}. </Text> 
                                                 <Text  numberOfLines={0} ellipsizeMode='tail' style = {{fontSize: 15, fontWeight: '500', width:'94%'}}>{this.state.datasource[this.state.selectedIndex].question}</Text> 
                                                 </View>
-                                           <NativeBaseProvider>
+                                          
                                             <View style = {{flexDirection: "row", justifyContent: 'space-evenly', marginTop: 50}}>
                                             <Button  style = { this.state.answersData[this.state.selectedIndex].questionId == ''  ? styles.buttonSelectedStyle :
                                              this.state.answersData[this.state.selectedIndex].answer == true ? styles.buttonSelectedStyle : styles.buttonSelectedStyle} onPress={ () => this.yesOrNoButtonAction(this.state.selectedIndex, OptionType.Yes)}>
@@ -80,14 +82,14 @@ export default class HealthFeedback extends React.Component<HealthFeedbackProps,
                                             <Text style = { this.state.answersData[this.state.selectedIndex].questionId == ''  ? styles.textUnselectedStyle : this.state.answersData[this.state.selectedIndex].answer == false ? styles.textSelectedStyle : styles.textUnselectedStyle}>NO</Text>
                                             </Button>
                                             </View>
-                                            </NativeBaseProvider>
+                                            
                                             <Text style = {{textAlign :'center', position: 'absolute', bottom: 10, left: 0, right: 0}}> {this.state.selectedIndex + 1}/{this.state.datasource.length}</Text>
                                         </View> : null }
                                 </View>
                             </DialogContent>
                     </Dialog>
                 </View>
-                </NativeBaseProvider>
+            
         )
     }
     

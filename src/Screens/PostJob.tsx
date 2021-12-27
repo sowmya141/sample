@@ -41,8 +41,10 @@ interface PostJobState {
   imagePath: string,
   jobStartDate: Date,
   jobEndDate:Date,
+ 
 }
 interface AddTaskProps {
+ 
 }
 export default class PostJob extends React.Component<PostJobState,AddTaskProps> {
 

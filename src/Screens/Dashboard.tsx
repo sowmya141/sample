@@ -49,6 +49,7 @@ interface DashboardState {
 }
 interface DashboardProps {
   navigation: any;
+  route:any;
 }
 export default class Dashboard extends React.Component<DashboardProps, DashboardState> {
   componentDidMount() {
@@ -682,7 +683,7 @@ export default class Dashboard extends React.Component<DashboardProps, Dashboard
         latitude: this.state.location.latitude,
         longitude: this.state.location.longitude,
       },
-      { latitude: 12.9094, longitude: 77.521 },
+      { latitude: '', longitude: '' },
       1,
     );
     Alert.alert(String(distance));

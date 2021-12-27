@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, CardItem, Button, Content, Title, Body, ListItem, Card } from 'native-base';
+import { View, Text,  Card } from 'native-base';
 import { getDay, getDateSuffix } from '../Helpers/DateExtension';
 import AppColors from './AppColors';
 export default class TaskItem extends Component {
@@ -15,11 +15,11 @@ export default class TaskItem extends Component {
         return (
             <Card style={{flex:1, flexDirection:'row',shadowColor: AppColors.shadowColor,shadowOpacity: 0.25,shadowRadius: 5,elevation: 5, marginBottom: 15}}>
             <View style={{ flex: 1, flexDirection: 'column', alignSelf: 'flex-start', alignItems: 'flex-start' }}>
-                <CardItem style={{ backgroundColor: AppColors.taskNameCardBackgroundColor, flex: 1, height:45 }}>
+                <View style={{ backgroundColor: AppColors.taskNameCardBackgroundColor, flex: 1, height:45 }}>
                     <Text style={{ flex: 1, fontSize: 15, fontWeight: '600', shadowColor: AppColors.shadowColor, shadowOffset: { width: 0, height: 2, }, shadowOpacity: 0.25, shadowRadius: 3.84, elevation: 5 }}>
                         {this.data.taskName}
                     </Text>
-                </CardItem>
+                </View>
                 
                 <View style={{ flex: 1,height:100,flexDirection:'row', shadowColor: AppColors.shadowColor, shadowOffset: { width: 0, height: 2, }, shadowOpacity: 0.25, shadowRadius: 3.84, elevation: 5 }}>
                     <View style={{ flex: 1, backgroundColor:AppColors.transparent, flexDirection:'row' }}>

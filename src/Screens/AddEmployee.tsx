@@ -1,6 +1,6 @@
 import React from 'react';
-import {Button, View, Input, Card, Container,  Text, Icon, NativeBaseProvider, } from 'native-base';
-import {Image, Alert, TouchableWithoutFeedback, Keyboard, KeyboardAvoidingView, Platform, Dimensions,StyleSheet} from 'react-native';
+import {Button, View, Input, Card, Container,  Text, Icon,  } from 'native-base';
+import {Image, Alert,  Dimensions,StyleSheet} from 'react-native';
 import AppColors from './AppColors';
 import DepartmentService from '../APIManager/DepartmentService';
 import {Picker} from '@react-native-picker/picker'
@@ -14,11 +14,16 @@ interface AddEmployeeState {
   employeeName: string,
   educationTitle: string,
   dialogVisible: boolean,
-  
+  isLoading:boolean,
+  data:Array<TaskType>
 }
-export default class AddEmployee extends React.Component {
+interface navPages{
+  navigation:any;
+  route:any;
+}
+export default class AddEmployee extends React.Component<navPages,AddEmployeeState> {
 
-   constructor(props: AddEmployeeState) {
+   constructor(props:navPages) {
     super(props);
     this.state = {
       isLoading: true,
@@ -66,7 +71,7 @@ export default class AddEmployee extends React.Component {
       return <Picker.Item key={i} value={s} label={s.name} />
     });
       return (
-        <NativeBaseProvider>
+     <View>
             <Dialog visible={(this.state.dialogVisible)}>
       <DialogContent>
         <View style={{ height: 200, width: Dimensions.get('window').width - 75 }}>
@@ -121,7 +126,7 @@ export default class AddEmployee extends React.Component {
           </View>
         </View>
          </Container>
-         </NativeBaseProvider>
+         </View>
     )
   }
 }

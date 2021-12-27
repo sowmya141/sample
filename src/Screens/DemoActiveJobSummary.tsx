@@ -1,9 +1,9 @@
 import React from 'react'
-import {View, Image, Alert, FlatList, Dimensions} from 'react-native'
+import {View, FlatList, Dimensions,StyleSheet} from 'react-native'
 import{Text} from 'native-base'
 import {getDay, getDateSuffix, getTime} from '../Helpers/DateExtension'
 import AppColors from './AppColors';
-import { Job } from 'src/Models/Response';
+import { Job } from '../../src/Models/Response';
 import Constants from '../Helpers/Constants';
 
 interface DemoActiveJobSummaryState {
@@ -23,7 +23,7 @@ export default class DemoActiveJobSummary extends React.Component<DemoActiveJobS
     }
 
     componentDidMount() {
-        Constants.isDemoTaskView = false;
+      
         let jobs: Job[] = [
             {
                 id: '123',
@@ -56,9 +56,9 @@ export default class DemoActiveJobSummary extends React.Component<DemoActiveJobS
     }
 
     render() {
-        const {viewStyle} = styles
+       
           return (
-              <View style = {viewStyle}>
+              <View style={{ flex: 1,backgroundColor: AppColors.background,flexDirection: 'column'}}>
                   <View style={{ marginBottom: 100 }}>
                                     <FlatList
                                         data={this.state.openJobs}
@@ -177,11 +177,13 @@ export default class DemoActiveJobSummary extends React.Component<DemoActiveJobS
       }
 
     }
-    
-    const styles = {
-      viewStyle: {
-        flex: 1,
-        backgroundColor: AppColors.background,
-        flexDirection: 'column'
-      }
-    }
+    const styles=StyleSheet.create({
+        viewStyle: {
+                flex: 1,
+                backgroundColor: AppColors.background,
+                flexDirection: 'column'
+              }
+    })
+    // const styles = StyleSheet.create( {
+    //  
+    // })

@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import { View, Text,  NativeBaseProvider } from 'native-base';
-import { ListView, Alert, TouchableOpacity, FlatList, Dimensions, Image, StyleSheet } from 'react-native';
-//import AncientTownImage from '../Images/ancient-town.jpg';
-import Right_Arrow from '../../src/assets/RightArrowWhite.png';
+import { View, Text,   } from 'native-base';
+import {  TouchableOpacity, FlatList, Dimensions, Image, StyleSheet } from 'react-native';
+
+
+
 import Constants from '../Helpers/Constants';
 import {formatDate} from '../Helpers/DateExtension'
 import AppColors from './AppColors';
@@ -42,7 +43,7 @@ export default class TeamItem extends Component {
     numberOfÇolumn = width > 375 ? 4 : 3
     render() {
         return (
-            <NativeBaseProvider>
+           
             <TouchableOpacity style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
                 onPress={() =>
                     this.teamItemSelected(this)
@@ -79,12 +80,12 @@ export default class TeamItem extends Component {
                         </View>
                     </View>
                     <View style={{ backgroundColor: AppColors.pickerHeaderStyleColor, width: 35 }}>
-                        <Image resizeMode='center' source={Right_Arrow} style={{ alignItems: 'center', justifyContent: 'center', flex: 1, alignSelf: 'center' }}>
+                        <Image resizeMode='center' source={require('../assets/RightArrowWhite.png')} style={{ alignItems: 'center', justifyContent: 'center', flex: 1, alignSelf: 'center' }}>
                         </Image>
                     </View>
                 </View>
             </TouchableOpacity>
-            </NativeBaseProvider>
+           
         );
     };
 }

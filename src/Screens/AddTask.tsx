@@ -1,5 +1,5 @@
 import React, { Component, useState } from 'react';
-import { Container,   Icon,  Text, Button, NativeBaseProvider,  } from 'native-base';
+import { Container,   Icon,  Text, Button,} from 'native-base';
 import { Alert, StyleSheet, View, Image, Dimensions, Platform, ScrollView } from 'react-native';
 import EmployeeService from '../APIManager/EmployeeService';
 import TaskService from '../APIManager/TaskService'
@@ -41,12 +41,14 @@ interface AddTaskState {
   onChange?:(image:ImageOrVideo)=>void;
 }
 interface AddTaskProps {
+  navigation:any,
+  route:any
 }
 const BUTTONS = ['Take Photo', 'Choose Photo Library', 'Cancel'];
 
 export default class AddTask extends Component<AddTaskProps, AddTaskState>  {
  
-   constructor(props: AddTaskProps) {
+   constructor(props: any) {
     super(props);
     this.state = {
       isLoading: true,
@@ -122,17 +124,16 @@ export default class AddTask extends Component<AddTaskProps, AddTaskState>  {
   };
 
   takePhotoFromCamera = () => {
-    console.log("takePhotoFromCamera takePhotoFromCamera takePhotoFromCamera takePhotoFromCamera")
     ImagePicker.openCamera({
       width: 300,
       height: 400,
-      cropping: true,
+      cropping: true
     }).then(image => {
       this.onSelectedImage(image);
       console.log(image);
-    })
-    .finally(close);
+    });
   };
+  
 
   choosePhotoFromLibrary = () => {
     ImagePicker.openPicker({
@@ -147,12 +148,12 @@ export default class AddTask extends Component<AddTaskProps, AddTaskState>  {
   
   showActionSheet = () => this.actionSheet.show()
  
-  getActionSheetRef = ref => (this.actionSheet = ref)
+  getActionSheetRef = (ref:any) => (this.actionSheet = ref)
  
 
 
 
-  onClickAddImage = (index) => {
+  onClickAddImage = (index:any) => {
    
      this.setState({selected:index})
     console.log('inside click method')
@@ -192,7 +193,7 @@ export default class AddTask extends Component<AddTaskProps, AddTaskState>  {
     const {taskImageStyle} = styles
 
     return (
-      <NativeBaseProvider>
+     
      
       <View>
       {this.state.dialogVisible ?
@@ -227,7 +228,12 @@ export default class AddTask extends Component<AddTaskProps, AddTaskState>  {
             Task Description </Text>
 
           <View style={{ marginLeft: 20, marginRight: 20 }}>
-            <TextInput returnKeyType='next' onChangeText={(text) => this.setState({ taskDescription: text })} rowSpan={5} bordeclear={true} placeholder="Give a small brief of the Task Performed" style={{ backgroundColor: AppColors.background, height: 80 }} />
+            <TextInput returnKeyType='next' 
+            onChangeText={(text) => this.setState({ taskDescription: text })} 
+            rowSpan={5}
+             bordeclear={true} 
+             placeholder="Give a small brief of the Task Performed" 
+             style={{ backgroundColor: AppColors.background, height: 80 }} />
           </View>
 
           <View style={{ height: 180, marginTop: 10, marginRight: 20, marginLeft: 20, flexDirection: 'row', backgroundColor: AppColors.transparent }}>
@@ -491,7 +497,7 @@ export default class AddTask extends Component<AddTaskProps, AddTaskState>  {
     </View>
 
    
-    </NativeBaseProvider>
+   
      );
   }
 }

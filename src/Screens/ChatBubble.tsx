@@ -1,20 +1,21 @@
 import React, { Component } from 'react';
-import { View, Text, CardItem, Button, Content, Title, Body, ListItem, Card } from 'native-base';
-import { ListView, Alert, TouchableOpacity, FlatList, Dimensions, Image, StyleSheet } from 'react-native';
-import { getDay, getDateSuffix } from '../Helpers/DateExtension';
+import { View, Text,   } from 'native-base';
+import {  StyleSheet } from 'react-native';
 import AppColors from './AppColors';
 import Constants from '../Helpers/Constants';
+interface Bubble{
+  data: any;
+  navigation: any;
+  selectedData: string
+  selectedButton: true
+  questionButtonSelected: boolean
+  
+}
 
-export default class ChatBubble extends Component {
-    data: any;
-    navigation: any;
-    selectedData: string
-    selectedButton: true
-    questionButtonSelected: false
-    constructor(props) {
+export default class ChatBubble extends Component <Bubble>{
+   
+    constructor(props:Bubble) {
         super(props);
-        this.data = props.data;
-        this.navigation = props.navigation
         this.state = {
              selectedButton: true,
              questionButtonSelected: false,

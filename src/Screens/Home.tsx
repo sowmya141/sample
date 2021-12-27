@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button,  Spinner, NativeBaseProvider,} from 'native-base';
+import { Button,  Spinner,} from 'native-base';
 import {Image, AsyncStorage, Text, View,TouchableOpacity, Alert, Platform, FlatList, Dimensions, PermissionsAndroid } from 'react-native';
 import AttendanceService from '../APIManager/AttendanceService';
 import { MyAttendanceListRequest } from '../../src/Models/Request/MyAttendanceListRequest';
@@ -13,6 +13,10 @@ import Constants from '../Helpers/Constants'
 import AppColors from './AppColors';
 import {getDistance} from 'geolib'
 
+interface HomeProps {
+navigation:any
+
+}
 interface HomeState {
   profileImage: string
   isLoading: boolean
@@ -20,9 +24,6 @@ interface HomeState {
   location: MyAttendanceRequest,
   datasource: Array<MyAttendanceListResponse>;
   currentLocation: string;
-
-}
-interface HomeProps {
 
 }
 
@@ -43,7 +44,7 @@ export default class Home extends React.Component<HomeProps, HomeState> {
         profileImage: '',
         dialogVisible: false,
         isLoading: false,
-        location: {latitude: '0', longitude: '0'},
+        location: {latitude: '', longitude: ''},
         datasource: Array<MyAttendanceListResponse>(),
         currentLocation: ''
     }
@@ -55,7 +56,7 @@ export default class Home extends React.Component<HomeProps, HomeState> {
     render() {
    
       return (
-        <NativeBaseProvider>
+      
           <View style = {{flex: 1,backgroundColor: AppColors.background,flexDirection: 'column'}}>
             <Dialog visible={this.state.dialogVisible}>
               <DialogContent>
@@ -121,8 +122,8 @@ export default class Home extends React.Component<HomeProps, HomeState> {
                         width: '85%',
                         marginRight:20
                       }}>
-                      {this.state.currentLocation}
-                    
+                    Welcome
+                    {console.log('location',this.state.currentLocation)}
                     </Text>
                   </View>
                   
@@ -175,7 +176,7 @@ export default class Home extends React.Component<HomeProps, HomeState> {
                            : null }
                     </View>
                   </View>
-          </NativeBaseProvider>
+         
     );
   }
          async showUserProfile(){
